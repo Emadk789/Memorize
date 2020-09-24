@@ -21,17 +21,21 @@ struct ContentView: View {
 //                        let emojiCards = emojiCardGame.cards.shuffle();
                         ForEach(0..<emojiCardGame.cards.count) { index in
                             CardView(card: self.emojiCardGame.cards[index])
-                                .frame(width: 40, height: 300.0)
+//                                .frame(width: 40, height: 300.0)
                                 .onTapGesture {
                                 self.emojiCardGame.choos(card: self.emojiCardGame.cards[index])
                             }
-//                                .padding()
+
+                                .padding(0)
                                 .foregroundColor(Color.orange)
-                                .font(Font.largeTitle)
+                                .font(emojiCardGame.cards.count/2 != 5 ? Font.largeTitle : Font.footnote)
+                                .frame(width: nil, height: 100, alignment: .center)
+                                .aspectRatio(0.05, contentMode: .fill)
 //                            .ratio
                         }
                         
                     }
+
 //                }
 //            }
 //        }

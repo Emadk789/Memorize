@@ -9,10 +9,12 @@
 import Foundation
 
 class EmojiCardGame {
-    static private let emojis = ["👻", "🎃", "😭", "💰"];
+    static private let emojis = ["👻", "🎃", "😭", "💰", "🕷"];
 //    private(set) var model: MemoryGame<String> =
 //        MemoryGame<String>(numberOfPirsOfCards: EmojiCardGame.emojis.count, content: EmojiCardGame.emojis);
-    private let secondModel: MemoryGame<String> = MemoryGame<String>(numberOfPirsOfCards: EmojiCardGame.emojis.count) { (index) in
+    // EmojiCardGame.emojis.count
+//    private var rnadomNumberOfPirsOfCards = Int.random(in: 0...5);
+    private let secondModel: MemoryGame<String> = MemoryGame<String>(numberOfPirsOfCards: 5) { (index) in
         EmojiCardGame.emojis[index];
         
     };
