@@ -8,13 +8,13 @@
 
 import Foundation
 
-class EmojiCardGame {
+class EmojiCardGame: ObservableObject {
     static private let emojis = ["👻", "🎃", "😭", "💰", "🕷"];
 //    private(set) var model: MemoryGame<String> =
 //        MemoryGame<String>(numberOfPirsOfCards: EmojiCardGame.emojis.count, content: EmojiCardGame.emojis);
     // EmojiCardGame.emojis.count
 //    private var rnadomNumberOfPirsOfCards = Int.random(in: 0...5);
-    private let secondModel: MemoryGame<String> = MemoryGame<String>(numberOfPirsOfCards: 5) { (index) in
+    @Published private var secondModel: MemoryGame<String> = MemoryGame<String>(numberOfPirsOfCards: 5) { (index) in
         EmojiCardGame.emojis[index];
         
     };

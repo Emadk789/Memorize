@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  EmojiMemoryGameView.swift
 //  Memorize
 //
 //  Created by Emad Albarnawi on 14/09/2020.
@@ -10,8 +10,8 @@ import SwiftUI
 typealias Card = MemoryGame<String>.Card;
 
 
-struct ContentView: View {
-    var emojiCardGame: EmojiCardGame;
+struct EmojiMemoryGameView: View {
+    @ObservedObject var emojiCardGame: EmojiCardGame;
 //    var emojiCards = emojiCardGame.cards.sh
     var body: some View {
 //        HStack {
@@ -28,7 +28,6 @@ struct ContentView: View {
 
                                 .padding(0)
                                 .foregroundColor(Color.orange)
-                                .font(emojiCardGame.cards.count/2 != 5 ? Font.largeTitle : Font.footnote)
                                 .frame(width: nil, height: 100, alignment: .center)
                                 .aspectRatio(0.05, contentMode: .fill)
 //                            .ratio
@@ -50,22 +49,32 @@ struct CardView: View {
 //    var randomNumber = Int.random(in: 0..<3)
     
     var body: some View {
-        
-        ZStack {
-            if card.isFaceUp {
-                RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 3)
-                RoundedRectangle(cornerRadius: 10).fill().foregroundColor(Color.white)
-                
-                Text(card.content)
-            } else {
-                RoundedRectangle(cornerRadius: 10).fill().foregroundColor(Color.orange)
+        GeometryReader { geometry in
+            ZStack {
+                if card.isFaceUp {
+                    RoundedRectangle(cornerRadius: cornerRadius).stroke(lineWidth: edgeLineWidth)
+                    RoundedRectangle(cornerRadius: cornerRadius).fill().foregroundColor(Color.white)
+                    
+                    Text(card.content)
+                } else {
+                    RoundedRectangle(cornerRadius: cornerRadius).fill().foregroundColor(Color.orange)
+                }
             }
+            .font(Font.system(size: getGeometrySize(of: geometry.size)))
         }
+        
+    }
+    // MARK: - Drawing Constants
+    let cornerRadius: CGFloat = 10.0,
+        edgeLineWidth: CGFloat = 3,
+        fontScaleFactor: CGFloat = 0.75;
+    private func getGeometrySize(of size: CGSize) -> CGFloat {
+        return min(size.width, size.height) * fontScaleFactor;
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(emojiCardGame: EmojiCardGame())
+        EmojiMemoryGameView(emojiCardGame: EmojiCardGame())
     }
 }

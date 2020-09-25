@@ -31,8 +31,22 @@ struct MemoryGame<Content>: Identifiable {
         cards.shuffle();
     }
     
-    func choos(card: Card) {
-        print("This is the card \(card)")
+    mutating func choos(card: Card) {
+        print("This is the card \(card)");
+        let cardIndex = index(of: card);
+        guard cardIndex != -1 else { return }
+        
+        self.cards[cardIndex].isFaceUp = !self.cards[cardIndex].isFaceUp;
+        
+        
+    }
+    func index(of value: Card) -> Int{
+        for (index, card) in cards.enumerated() {
+            if card.id == value.id {
+                return index
+            }
+        }
+        return -1;
     }
     
     struct Card: Identifiable {
