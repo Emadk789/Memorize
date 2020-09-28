@@ -17,23 +17,23 @@ struct EmojiMemoryGameView: View {
 //        HStack {
 //            ForEach(0..<5) { index in
 //                VStack {
-                    HStack {
+//                    HStack {
 //                        let emojiCards = emojiCardGame.cards.shuffle();
-                        ForEach(0..<emojiCardGame.cards.count) { index in
-                            CardView(card: self.emojiCardGame.cards[index])
+        Grid(emojiCardGame.cards) { card in
+                            CardView(card: card)
 //                                .frame(width: 40, height: 300.0)
                                 .onTapGesture {
-                                self.emojiCardGame.choos(card: self.emojiCardGame.cards[index])
+                                self.emojiCardGame.choos(card: card)
                             }
 
                                 .padding(0)
                                 .foregroundColor(Color.orange)
-                                .frame(width: nil, height: 100, alignment: .center)
-                                .aspectRatio(0.05, contentMode: .fill)
+//                                .frame(width: nil, height: 100, alignment: .center)
+//                                .aspectRatio(0.05, contentMode: .fill)
 //                            .ratio
                         }
                         
-                    }
+//                    }
 
 //                }
 //            }

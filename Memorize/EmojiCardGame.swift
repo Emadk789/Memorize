@@ -14,7 +14,7 @@ class EmojiCardGame: ObservableObject {
 //        MemoryGame<String>(numberOfPirsOfCards: EmojiCardGame.emojis.count, content: EmojiCardGame.emojis);
     // EmojiCardGame.emojis.count
 //    private var rnadomNumberOfPirsOfCards = Int.random(in: 0...5);
-    @Published private var secondModel: MemoryGame<String> = MemoryGame<String>(numberOfPirsOfCards: 5) { (index) in
+    @Published private var secondModel: MemoryGame<String> = MemoryGame<String>(numberOfPirsOfCards: 3) { (index) in
         EmojiCardGame.emojis[index];
         
     };
