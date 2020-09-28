@@ -26,7 +26,7 @@ struct EmojiMemoryGameView: View {
                                 self.emojiCardGame.choos(card: card)
                             }
 
-                                .padding(0)
+                                .padding(5)
                                 .foregroundColor(Color.orange)
 //                                .frame(width: nil, height: 100, alignment: .center)
 //                                .aspectRatio(0.05, contentMode: .fill)

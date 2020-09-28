@@ -38,8 +38,10 @@ struct Grid<Item, ItemView>: View where Item: Identifiable, ItemView: View {
     }
     private func index(of value: Item) -> Int? {
         for (index, item) in items.enumerated() {
-            let cond = item.id == value.id;
-            return cond ? index : nil;
+            if item.id == value.id {
+                return index;
+            }
+            
         }
         return nil;
     }
